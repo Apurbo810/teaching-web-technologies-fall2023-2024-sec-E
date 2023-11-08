@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth</title>
+    <script>
+        function validateForm() {
+            var errorMessage = document.getElementById('error-message');
+            var dob_dd = parseInt(document.getElementsByName('dob_dd')[0].value);
+            var dob_mm = parseInt(document.getElementsByName('dob_mm')[0].value);
+            var dob_yyyy = parseInt(document.getElementsByName('dob_yyyy')[0].value);
+
+            if (
+                isNaN(dob_dd) ||
+                isNaN(dob_mm) ||
+                isNaN(dob_yyyy) ||
+                dob_dd < 1 || dob_dd > 31 ||
+                dob_mm < 1 || dob_mm > 12 ||
+                dob_yyyy < 1900 || dob_yyyy > 2016
+            ) {
+                errorMessage.innerHTML = 'Please enter a valid date of birth ';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Date of Birth</h1>
+    <form onsubmit="return validateForm()">
+        <fieldset>
+            <legend>Date of Birth</legend>
+            <input type="text" name="dob_dd" style="width: 30px;" /> /
+            <input type="text" name="dob_mm" style="width: 30px;" /> /
+            <input type="text" name="dob_yyyy" style="width: 50px;" /><hr>
+            <p id="error-message" style="color: red;"></p>
+            <input type="submit" value="Submit">
+        </fieldset>
+
+
+    </form>
+</body>
+</html>
+
