@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function validateForm() {
+            var errorMessage = document.getElementById('error-message');
+            var sscCheckbox = document.getElementById('ssc');
+            var hscCheckbox = document.getElementById('hsc');
+            var bscCheckbox = document.getElementById('bsc');
+
+            if (!sscCheckbox.checked && !hscCheckbox.checked && !bscCheckbox.checked) {
+                errorMessage.innerHTML = 'Please select at least one Option.';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <fieldset>
+            <legend>Degrees</legend>
+            <input type="checkbox" id="ssc" name="degrees" value="ssc">
+            <label for="ssc">SSC</label>
+
+            <input type="checkbox" id="hsc" name="degrees" value="hsc">
+            <label for="hsc">HSC</label>
+
+            <input type="checkbox" id="bsc" name="degrees" value="bsc">
+            <label for="bsc">BSC</label>
+        </fieldset>
+        <p id="error-message" style="color: red;"></p>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

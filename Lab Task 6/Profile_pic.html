@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function validateForm() {
+            var errorMessage = document.getElementById('error-message');
+            var profilePicture = document.getElementById('Browse').value;
+            var userId = document.getElementById('user-id').value;
+            if (!profilePicture) {
+                errorMessage.innerHTML = 'Please select a profile picture.';
+                return false;
+            }
+            if (userId === '' || isNaN(userId) || userId <= 0) {
+                errorMessage.innerHTML = 'User ID cannot be empty and must be a positive number.';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateForm()" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Profile Picture</legend>
+            User ID
+            <input type="text" id="user-id" name="user-id" placeholder="Enter User ID"><br>
+            Profile Picture
+            <input type="file" id="Browse" name="Browse"><hr>
+            <p id="error-message" style="color: red;"></p>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+</body>
+</html>

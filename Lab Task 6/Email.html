@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .hint {
+            display: none;
+            background-color: #f2f2f2;
+            position: absolute;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const emailField = document.getElementById('email');
+            const errorMessage = document.getElementById('error-message');
+            const emailValue = emailField.value.trim();
+
+            if (emailValue === '') {
+                errorMessage.innerHTML = 'Email cannot be empty';
+                return false;
+            }
+
+            if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailValue)) {
+                errorMessage.innerHTML = 'Please enter a valid email address';
+                return false;
+            }
+
+            return true;
+        }
+
+        function showHint(event) {
+            const hint = document.getElementById('hint');
+            hint.style.left = event.pageX + 'px';
+            hint.style.top = event.pageY + 'px';
+            hint.style.display = 'block';
+        }
+
+        function hideHint() {
+            const hint = document.getElementById('hint');
+            hint.style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email">
+        <button type="button" onmousemove="showHint(event)" onmouseout="hideHint()">i</button>
+        <div id="hint" class="hint">Hint: sample@example.com</div>
+        <p id="error-message" style="color: red;"></p>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

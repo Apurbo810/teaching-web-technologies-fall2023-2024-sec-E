@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+function validateForm() {
+            var inputField = document.getElementById('name');
+            var errorMessage = document.getElementById('error-message');
+            var nameValue = inputField.value.trim();
+            if (nameValue === '') {
+                errorMessage.innerHTML = 'Name cannot be empty';
+                return false;
+            }
+            var words = nameValue.split(' ');
+            if (words.length < 2) {
+                errorMessage.innerHTML = 'Name must contain at least two words';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name">
+        <p id="error-message" style="color: red;"></p>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
